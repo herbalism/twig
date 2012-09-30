@@ -1,0 +1,17 @@
+{
+    "name": "twig",
+    "version": "0.0.1",
+    "description": "Create Single Page Applications or compile to static/semi staic pages",
+    "author": { "name": "Joakim Ohlrogge" },
+    "contributors": [{
+        "name": "Joakim Ohlrogge",
+        "url": "https://github.com/johlrogge"
+    }],
+    "dependencies": {
+	"../foliage": "*"
+    },
+    "devDependencies": {
+        "buster-amd": "*",
+	"buster": "*"
+    }
+}
