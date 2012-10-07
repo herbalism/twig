@@ -1,37 +1,43 @@
-define(["require", "twig-base"], function(require, base) {
+define(["require", "twig-base", "jquery-hashchange"], function(require, base, $) {
+
+
     var show = function() {
 	var page = base.location.hash.slice(1);
-	console.log("showing twig: ", name, base.location.hash);
 	require(["twig!"+page], function(twig) {
-	    console.log("about to show", page);
-	    twig.show();
+	    twig.goTo();
 	})
     };
 
+
     var navigate = function(target) {
 	base.location.hash = "#"+target;
-	show();
     }
-    
-    return {
+
+    var res = {
 	load: function(resourceName, req, callback, config) {
 	    req([resourceName], function(page) {
 		callback({
-		    show: function(element) {
+		    goTo: function(element) {
 			var element = element || 'body';
 			page(element, base.document);
 		    }
 		})
 	    })
-	},
-	start: function() {
-	    var page = base.location.hash;
-	    if(page) {
-		show();
-	    }
-	    else {
-		navigate("index");
-	    }
 	}
     }
+    function start() {
+	if(base.location.hash) {
+	    show()
+	} else {
+	    navigate("index")
+	};
+    }
+
+    if($.attachedTwig !== true) {
+	$(base).hashchange(show);
+	$.attachedTwig = true;
+	start()
+    }
+
+    return res;
 });
