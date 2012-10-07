@@ -1,5 +1,3 @@
-define([], function() {
-    return function() {
-	console.log("showing page in ", arguments);
-    }
+define(['foliage'], function(f) {
+    return f.p("hello world!")
 });

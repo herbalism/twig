@@ -6,13 +6,19 @@
         pluginPath: '../../../src',
         paths: {
            'jquery': '../../../ext/jquery-1.8.2',
-           'jquery-hashchange': '../../../ext/jquery-hashchange'
+           'jquery-hashchange': '../../../ext/jquery-hashchange',
+           'underscore': '../../../mod/foliage/lib/ext/underscore'
         },
         packages: {
             'twig': {
                 'path':'../../../src',
                 'main':'twig',
-                'ext':'../lib'
+                'lib':'../ext'
+            },
+            'foliage' : {
+                'path':'../../../mod/foliage/lib',
+                'main':'foliage',
+                'lib': '../ext'
             }
         }
     };
