@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<script>
+    curl = {
+        baseUrl: 'js',
+        pluginPath: '../../../src',
+        paths: {
+           'jquery': '../../../ext/jquery-1.8.2',
+           'jquery-hashchange': '../../../ext/jquery-hashchange',
+           'underscore': '../../../mod/foliage/lib/ext/underscore'
+        },
+        packages: {
+            'twig': {
+                'path':'../../../src',
+                'main':'twig',
+                'lib':'../ext'
+            },
+            'foliage' : {
+                'path':'../../../mod/foliage/lib',
+                'main':'foliage',
+                'lib': '../ext'
+            }
+        }
+    };
+</script>
+<script src="../../mod/curl/dist/curl/curl.js" type="text/javascript"></script>
+<script type="text/javascript">
+  define("twig-base", [] , function() {
+    return window;
+  });
+  curl(['twig']);
+</script>
+</HEAD>
+<BODY>
+</BODY>
+</HEAD>
