@@ -1,5 +1,5 @@
-define(['twig', 'twig!hello'], 
+define(['twig', 'twig!index'], 
        function(twig) {
 	   console.log("About to start twig", twig);
-	   twig.start('hello');
+	   twig.start();
        });
