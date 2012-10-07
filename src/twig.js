@@ -19,12 +19,15 @@ define(["require", "twig-base", "jquery-hashchange"], function(require, base, $)
 		callback({
 		    goTo: function(element) {
 			var element = element || 'body';
-			page(element, base.document);
+			var buffer = $("<body />")
+			page(buffer);
+			$(element).replaceWith(buffer);
 		    }
 		})
 	    })
 	}
     }
+
     function start() {
 	if(base.location.hash) {
 	    show()
