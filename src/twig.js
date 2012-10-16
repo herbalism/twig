@@ -3,6 +3,12 @@ define(["require", "twig-base", "jquery-hashchange"], function(require, base, $)
 
     var show = function() {
 	var page = base.location.hash.slice(1);
+	var authToken = page.match(/access_token=(.*)/);
+
+	if (authToken) {
+	    page = "index";
+	}
+
 	require(["twig!"+page], function(twig) {
 	    twig.goTo();
 	})
