@@ -1,4 +1,4 @@
-define(["require", "twig-base", "jquery-hashchange"], function(require, base, $) {
+define(["require", "twig-base", "jquery"], function(require, base, $) {
 
 
     var show = function() {
@@ -43,7 +43,7 @@ define(["require", "twig-base", "jquery-hashchange"], function(require, base, $)
     }
 
     if($.attachedTwig !== true) {
-	$(base).hashchange(show);
+	window.onhashchange = show;
 	$.attachedTwig = true;
 	start()
     }
