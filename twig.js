@@ -1,4 +1,4 @@
-define(["require", "twig-base", "jquery"], function(require, base, $) {
+define(["require", "foliage/foliage-react", "twig-base", "jquery"], function(require, render, base, $) {
 
     function show() {
 	var request = base.location.hash.slice(1).split('?');
@@ -24,16 +24,13 @@ define(["require", "twig-base", "jquery"], function(require, base, $) {
 	load: function(resourceName, req, callback, config) {
 	    req([resourceName], function(page) {
 		callback({
-		    goTo: function(parameters, element) {
-			element = element || 'body';
-			var buffer = $("<body />")
-			page(parameters)(buffer);
-			$(element).replaceWith(buffer);
+		    goTo: function(parameters) {
+			render.in('#content', page(parameters));
 		    }
 		});
 	    });
 	}
-    }
+    };
 
     function start() {
 	if(base.location.hash) {

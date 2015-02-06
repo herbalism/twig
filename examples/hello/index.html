@@ -1,12 +1,11 @@
-<HTML>
-<HEAD>
+<html>
+<head>
 <script>
     curl = {
         baseUrl: 'js',
         pluginPath: '../../..',
         paths: {
-           'jquery': '../../../ext/jquery-1.8.2',
-           'underscore': '../../../mod/foliage/lib/ext/underscore'
+           'jquery': '../../../ext/jquery-1.8.2'
         },
         packages: {
             'twig': {
@@ -14,21 +13,29 @@
                 'main':'twig'
             },
             'foliage' : {
-                'path':'../../../mod/foliage/lib',
+                'path':'../../../mod/foliage',
                 'main':'foliage',
                 'lib': '../ext'
-            }
+            },
+            'lodash' : {
+                'path':'../../../bower_components/lodash',
+                'main':'lodash'
+            },
+            'react' : {
+                'path':'../../../bower_components/react',
+                'main':'react'
+            } 
         }
     };
 </script>
-<script src="../../mod/curl/dist/curl/curl.js" type="text/javascript"></script>
+<script src="../../bower_components/curl/dist/curl/curl.js" type="text/javascript"></script>
 <script type="text/javascript">
   define("twig-base", [] , function() {
     return window;
   });
   curl(['twig']);
 </script>
-</HEAD>
-<BODY>
-</BODY>
-</HTML>
+</head>
+<body id="content">
+</body>
+</html>

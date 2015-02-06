@@ -1,6 +1,4 @@
 [submodule "mod/foliage"]
 	path = mod/foliage
 	url = https://github.com/johlrogge/foliage.git
-[submodule "mod/curl"]
-	path = mod/curl
-	url = https://github.com/cujojs/curl
+
