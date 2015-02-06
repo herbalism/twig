@@ -1,23 +1,20 @@
-define(["require", "foliage/foliage-react", "twig-base", "jquery"], function(require, render, base, $) {
+define(["require", "foliage/foliage-react", "twig-base"], function(require, render, base) {
 
     function show() {
 	var request = base.location.hash.slice(1).split('?');
 	var page = request[0];
+
 	var parameters = {};
-	
 	if (request.length > 1) {
 	    request[1].split('&').forEach(function(parameter) {
-		parameters[parameter.split('=')[0]] = parameter.split('=')[1];
+		var parameterEntry = parameter.split('=');
+		parameters[parameterEntry[0]] = parameterEntry[1];
 	    });
 	}
 
 	require(["twig!"+page], function(twig) {
 	    twig.goTo(parameters);
 	})
-    }
-
-    function navigate(target) {
-	base.location.hash = "#"+target;
     }
 
     var res = {
@@ -32,6 +29,10 @@ define(["require", "foliage/foliage-react", "twig-base", "jquery"], function(req
 	}
     };
 
+    function navigate(target) {
+	base.location.hash = "#"+target;
+    }
+
     function start() {
 	if(base.location.hash) {
 	    show();
@@ -40,11 +41,8 @@ define(["require", "foliage/foliage-react", "twig-base", "jquery"], function(req
 	}
     }
 
-    if($.attachedTwig !== true) {
-	window.onhashchange = show;
-	$.attachedTwig = true;
-	start();
-    }
+    window.onhashchange = show;
+    start();
 
     return res;
 });
